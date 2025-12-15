@@ -11,7 +11,7 @@ import java.util.List;
 
 
 public class GestorUnidades {
-    private List<Registrable> ListaEntidades = new ArrayList<>();
+    private List<Registrable> listaEntidades = new ArrayList<>();
 
 
     public void instanciasGraficas(){
@@ -66,7 +66,7 @@ public class GestorUnidades {
                 double toneladasproduccion = Double.parseDouble(JOptionPane.showInputDialog(null,"Ingrese capacidad de toneladas de produccion del centro: "));
                 int numerojaulas = Integer.parseInt(JOptionPane.showInputDialog(null,"Ingrese numeros de jaulas del centro: "));
                 CentroCultivo centrocultivo = new CentroCultivo(nombre,comuna,toneladasproduccion,numerojaulas);
-                ListaEntidades.add(centrocultivo);
+                listaEntidades.add(centrocultivo);
                 JOptionPane.showMessageDialog(null,"DATOS INGRESADOS CON EXITO..." + "\nNombre: " + nombre + "\nComuna: " + comuna +
                         "\nToneladas de produccion: " + toneladasproduccion + "\nNumero de jaulas: " + numerojaulas);
                 ciclocentro = false;
@@ -85,7 +85,7 @@ public class GestorUnidades {
                 double capacidadproceso = Double.parseDouble(JOptionPane.showInputDialog(null,"Ingrese capacidad de proceso de la planta: "));
                 int numerojaulas = Integer.parseInt(JOptionPane.showInputDialog(null,"Ingrese numeros de jaulas de la planta: "));
                 PlantaProceso plantaproceso = new PlantaProceso(nombre,comuna,capacidadproceso,numerojaulas);
-                ListaEntidades.add(plantaproceso);
+                listaEntidades.add(plantaproceso);
                 JOptionPane.showMessageDialog(null,"DATOS INGRESADOS CON EXITO..." + "\nNombre: " + nombre + "\nComuna: " + comuna +
                         "\nCapacidad de proceso: " + capacidadproceso + "\nNumero de jaulas: " + numerojaulas);
                 cicloplanta = false;
@@ -113,7 +113,7 @@ public class GestorUnidades {
             }
         }
         Empleado empleado = new Empleado(nombre,apellido,area,rol);
-        ListaEntidades.add(empleado);
+        listaEntidades.add(empleado);
         JOptionPane.showMessageDialog(null,"DATOS INGRESADOS CON EXITO..." + "\nNombre: " + nombre + "\nApellido: " + apellido +
                 "\nArea: " + area + "\nRol: " + rol);
 
@@ -123,21 +123,21 @@ public class GestorUnidades {
 
     //CREAMOS UN GETTER PARA FACILITAR LA OBTENCION DE INFORMACION DE LA LISTA
     public List<Registrable> getListaEntidades() {
-        return ListaEntidades;
+        return listaEntidades;
     }
 
     public void recorrerLista(){
-        for (Registrable RG : getListaEntidades()){
-            if (getListaEntidades().isEmpty()){
-                JOptionPane.showMessageDialog(null,"No hay elementos almacenados...");
-                break;
-            }
-            if (RG instanceof PlantaProceso){
-                RG.mostrarResumen();
-            } else if (RG instanceof CentroCultivo){
-                RG.mostrarResumen();
-            } else if (RG instanceof Empleado){
-                RG.mostrarResumen();
+        if (getListaEntidades().isEmpty()){
+            JOptionPane.showMessageDialog(null,"No hay elementos almacenados...");
+        } else {
+            for (Registrable RG : getListaEntidades()){
+                if (RG instanceof PlantaProceso){
+                    RG.mostrarResumen();
+                } else if (RG instanceof CentroCultivo){
+                    RG.mostrarResumen();
+                } else if (RG instanceof Empleado){
+                    RG.mostrarResumen();
+                }
             }
         }
     }
