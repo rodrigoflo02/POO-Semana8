@@ -15,4 +15,5 @@ Instrucciones
 2- Abrir el proyecto con Intellij Idea 
 3- En menu, abrir el proyecto seleccionando la carpeta de este 
 4- Ejecutar la clase Main.java desde el paquete UI (Ctrl + F5).
+¡EL PROGRAMA SE CIERRA SELECCIONANDO LA OPCION 5!
 
